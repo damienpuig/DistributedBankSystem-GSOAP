@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Bank"
+ targetNamespace="urn:Bank/Bank.wsdl"
+ xmlns:tns="urn:Bank/Bank.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:Account"
+ xmlns:ns1="urn:Bank"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="urn:Account"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:Account"
+  xmlns:ns1="urn:Bank"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="urn:Bank"/>
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ </schema>
+
+ <schema targetNamespace="urn:Bank"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:Account"
+  xmlns:ns1="urn:Bank"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="urn:Account"/>
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ </schema>
+
+</types>
+
+<message name="DepositRequest">
+ <part name="entry" type="xsd:float"/><!-- ns1__Deposit::entry -->
+</message>
+
+<message name="DepositResponse">
+ <part name="rresult" type="xsd:string"/><!-- ns1__Deposit::rresult -->
+</message>
+
+<message name="WithdrawRequest">
+ <part name="entry" type="xsd:float"/><!-- ns1__Withdraw::entry -->
+</message>
+
+<message name="WithdrawResponse">
+ <part name="rresult" type="xsd:string"/><!-- ns1__Withdraw::rresult -->
+</message>
+
+<message name="initAccountsRequest">
+ <part name="bankid" type="xsd:int"/><!-- ns1__initAccounts::bankid -->
+</message>
+
+<message name="initAccountsResponse">
+ <part name="rresult" type="xsd:string"/><!-- ns1__initAccounts::rresult -->
+</message>
+
+<message name="TransfertRequest">
+ <part name="entry" type="xsd:float"/><!-- ns1__Transfert::entry -->
+ <part name="accountid" type="xsd:int"/><!-- ns1__Transfert::accountid -->
+</message>
+
+<message name="TransfertResponse">
+ <part name="rresult" type="xsd:string"/><!-- ns1__Transfert::rresult -->
+</message>
+
+<message name="SwitchAccountRequest">
+ <part name="bankid" type="xsd:int"/><!-- ns1__SwitchAccount::bankid -->
+</message>
+
+<message name="SwitchAccountResponse">
+ <part name="rresult" type="xsd:string"/><!-- ns1__SwitchAccount::rresult -->
+</message>
+
+<message name="GetStateRequest">
+</message>
+
+<message name="GetStateResponse">
+ <part name="rresult" type="xsd:string"/><!-- ns1__GetState::rresult -->
+</message>
+
+<portType name="BankPortType">
+ <operation name="Deposit">
+  <documentation>Service definition of function ns1__Deposit</documentation>
+  <input message="tns:DepositRequest"/>
+  <output message="tns:DepositResponse"/>
+ </operation>
+ <operation name="Withdraw">
+  <documentation>Service definition of function ns1__Withdraw</documentation>
+  <input message="tns:WithdrawRequest"/>
+  <output message="tns:WithdrawResponse"/>
+ </operation>
+ <operation name="initAccounts">
+  <documentation>Service definition of function ns1__initAccounts</documentation>
+  <input message="tns:initAccountsRequest"/>
+  <output message="tns:initAccountsResponse"/>
+ </operation>
+ <operation name="Transfert">
+  <documentation>Service definition of function ns1__Transfert</documentation>
+  <input message="tns:TransfertRequest"/>
+  <output message="tns:TransfertResponse"/>
+ </operation>
+ <operation name="SwitchAccount">
+  <documentation>Service definition of function ns1__SwitchAccount</documentation>
+  <input message="tns:SwitchAccountRequest"/>
+  <output message="tns:SwitchAccountResponse"/>
+ </operation>
+ <operation name="GetState">
+  <documentation>Service definition of function ns1__GetState</documentation>
+  <input message="tns:GetStateRequest"/>
+  <output message="tns:GetStateResponse"/>
+ </operation>
+</portType>
+
+<binding name="Bank" type="tns:BankPortType">
+ <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="Deposit">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="Withdraw">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="initAccounts">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="Transfert">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="SwitchAccount">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="GetState">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Bank" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="Bank">
+ <documentation>gSOAP 2.8.11 generated service definition</documentation>
+ <port name="Bank" binding="tns:Bank">
+  <SOAP:address location="http://localhost:80"/>
+ </port>
+</service>
+
+</definitions>

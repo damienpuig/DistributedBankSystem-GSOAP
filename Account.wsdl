@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Account"
+ targetNamespace="urn:Account/Account.wsdl"
+ xmlns:tns="urn:Account/Account.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:Account"
+ xmlns:ns1="urn:Bank"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="urn:Account"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:Account"
+  xmlns:ns1="urn:Bank"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="urn:Bank"/>
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ </schema>
+
+ <schema targetNamespace="urn:Bank"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:Account"
+  xmlns:ns1="urn:Bank"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="urn:Account"/>
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ </schema>
+
+</types>
+
+<message name="addRequest">
+ <part name="entry" type="xsd:float"/><!-- ns__add::entry -->
+</message>
+
+<message name="addResponse">
+ <part name="rresulta" type="xsd:boolean"/><!-- ns__add::rresulta -->
+</message>
+
+<message name="removeRequest">
+ <part name="entry" type="xsd:float"/><!-- ns__remove::entry -->
+</message>
+
+<message name="removeResponse">
+ <part name="rresultr" type="xsd:boolean"/><!-- ns__remove::rresultr -->
+</message>
+
+<message name="initRequest">
+ <part name="balance" type="xsd:float"/><!-- ns__init::balance -->
+</message>
+
+<message name="initResponse">
+ <part name="rresulti" type="xsd:string"/><!-- ns__init::rresulti -->
+</message>
+
+<message name="getbalanceRequest">
+</message>
+
+<message name="getbalanceResponse">
+ <part name="rresultb" type="xsd:string"/><!-- ns__getbalance::rresultb -->
+</message>
+
+<message name="getstatusRequest">
+</message>
+
+<message name="getstatusResponse">
+ <part name="rresultg" type="xsd:string"/><!-- ns__getstatus::rresultg -->
+</message>
+
+<portType name="AccountPortType">
+ <operation name="add">
+  <documentation>Service definition of function ns__add</documentation>
+  <input message="tns:addRequest"/>
+  <output message="tns:addResponse"/>
+ </operation>
+ <operation name="remove">
+  <documentation>Service definition of function ns__remove</documentation>
+  <input message="tns:removeRequest"/>
+  <output message="tns:removeResponse"/>
+ </operation>
+ <operation name="init">
+  <documentation>Service definition of function ns__init</documentation>
+  <input message="tns:initRequest"/>
+  <output message="tns:initResponse"/>
+ </operation>
+ <operation name="getbalance">
+  <documentation>Service definition of function ns__getbalance</documentation>
+  <input message="tns:getbalanceRequest"/>
+  <output message="tns:getbalanceResponse"/>
+ </operation>
+ <operation name="getstatus">
+  <documentation>Service definition of function ns__getstatus</documentation>
+  <input message="tns:getstatusRequest"/>
+  <output message="tns:getstatusResponse"/>
+ </operation>
+</portType>
+
+<binding name="Account" type="tns:AccountPortType">
+ <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="add">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="remove">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="init">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getbalance">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+ <operation name="getstatus">
+  <SOAP:operation style="rpc" soapAction=""/>
+  <input>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+     <SOAP:body use="encoded" namespace="urn:Account" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="Account">
+ <documentation>gSOAP 2.8.11 generated service definition</documentation>
+ <port name="Account" binding="tns:Account">
+  <SOAP:address location="http://localhost:80"/>
+ </port>
+</service>
+
+</definitions>
